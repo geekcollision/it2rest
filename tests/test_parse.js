@@ -1,6 +1,6 @@
-var GoogleSpreadsheet = require("google-spreadsheet");
+var GoogleSpreadsheet = require('google-spreadsheet');
 
-var parse = require('./lib/parse');
+var parse = require('../lib/parse');
 
 
 main();

@@ -12,6 +12,7 @@
   "dependencies": {
     "google-spreadsheet": "~0.2.5",
     "express": "~3.4.4",
-    "parse-env": "~0.1.4"
+    "parse-env": "~0.1.4",
+    "cron": "~1.0.1"
   }
 }

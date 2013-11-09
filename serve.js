@@ -2,6 +2,7 @@
 var express = require('express');
 
 var config = require('./config');
+var cron = require('./lib/cron');
 
 
 main();
@@ -32,7 +33,9 @@ function main() {
     });
     // TODO: queries (search using query parameter
 
-    // TODO: cron
+    cron(config, function(err) {
+        if(err) console.error(err);
+    });
 
     process.on('exit', terminator);
 
