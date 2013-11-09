@@ -1,0 +1,14 @@
+{
+  "name": "it2rest",
+  "version": "0.1.0",
+  "description": "Converts IT company spreadsheet to REST api",
+  "main": "./lib/parse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juho Vepsalainen",
+  "license": "MIT",
+  "dependencies": {
+    "google-spreadsheet": "~0.2.5"
+  }
+}
