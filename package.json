@@ -1,7 +1,7 @@
 {
   "name": "it2rest",
   "version": "0.1.0",
-  "description": "Converts IT company spreadsheet to REST api",
+  "description": "Provides IT company spreadsheet to REST api",
   "main": "./lib/parse.js",
   "engines": {
     "node": ">= 0.8.0",
