@@ -2,6 +2,7 @@
   "name": "it2rest",
   "version": "0.1.0",
   "description": "Provides IT company spreadsheet through REST api",
+  "private": true,
   "main": "./lib/parse.js",
   "engines": {
     "node": ">= 0.8.0",
@@ -19,5 +20,13 @@
     "parse-env": "~0.1.4",
     "cron": "~1.0.1",
     "async": "~0.2.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:geekcollision/it2rest.git"
+  },
+  "homepage": "https://github.com/geekcollision/it2rest",
+  "bugs": {
+    "url": "https://github.com/geekcollision/it2rest/issues"
   }
 }
