@@ -27,15 +27,7 @@ function main() {
     });
 
     app.get('/' + apiPrefix + '/companies', function(req, res) {
-        var data = {};
-
-        try {
-            data = require('./public/data');
-        } catch(e) {
-            console.warn('Missing API data!');
-        }
-
-        res.send(data);
+        res.send(filterData(getData(), req.query));
     });
 
     cron(config, function(err) {
@@ -64,4 +56,27 @@ function terminator(sig) {
     }
 
     console.log('%s: Node server stopped.', Date(Date.now()) );
+}
+
+function getData() {
+    try {
+        return require('./public/data');
+    } catch(e) {
+        console.warn('Missing API data!');
+    }
+
+    return {};
+}
+
+function filterData(data, query) {
+    if(!Object.keys(query).length) return data;
+
+    // ok if any part of query matches
+    return data.filter(function(d) {
+        for(var k in query) {
+            if(query.hasOwnProperty(k)) {
+                if(d[k] == query[k]) return true;
+            }
+        }
+    });
 }
