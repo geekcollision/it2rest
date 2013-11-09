@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Converts IT company spreadsheet to REST api",
   "main": "./lib/parse.js",
+  "engines": {
+    "node": ">= 0.8.0",
+    "npm": ">= 1.2.0"
+  },
   "scripts": {
     "test": "node ./test.js",
     "start": "node ./serve.js"
