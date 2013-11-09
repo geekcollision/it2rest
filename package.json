@@ -1,6 +1,6 @@
 {
   "name": "it2rest",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Provides IT company spreadsheet through REST api",
   "private": true,
   "main": "./lib/parse.js",
