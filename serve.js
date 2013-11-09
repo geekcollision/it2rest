@@ -27,11 +27,16 @@ function main() {
     });
 
     app.get('/' + apiPrefix + '/companies', function(req, res) {
-        // TODO: return data.json
+        var data = {};
 
-        res.send(200);
+        try {
+            data = require('./public/data');
+        } catch(e) {
+            console.warn('Missing API data!');
+        }
+
+        res.send(data);
     });
-    // TODO: queries (search using query parameter
 
     cron(config, function(err) {
         if(err) console.error(err);
