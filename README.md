@@ -4,6 +4,5 @@
 
 ## Schema
 
-* /v1/companies
-* /v1/companies?company=foo - Filter (works with multiple filters)
+Root: `api/v1/companies`. Only GET is allowed, see [rest-sugar documentation](https://github.com/bebraw/rest-sugar) for the whole API.
 

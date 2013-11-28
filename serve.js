@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 var express = require('express');
+var rest = require('rest-sugar');
+var sugar = require('object-sugar');
 
 var config = require('./config');
 var cron = require('./lib/cron');
+var models = require('./models');
 
 
 main();
 
 function main() {
     var app = express();
-
-    var apiPrefix = 'v1';
-
     var port = config.port;
 
     app.configure(function() {
@@ -26,8 +26,12 @@ function main() {
         app.use(express.errorHandler());
     });
 
-    app.get('/' + apiPrefix + '/companies', function(req, res) {
-        res.send(filterData(getData(), req.query));
+    var api = rest(app, '/api/v1', {
+        companies: models.Company
+    }, sugar);
+
+    api.pre(function() {
+        api.use(rest.only('GET'));
     });
 
     cron(config, function(err) {
@@ -56,27 +60,4 @@ function terminator(sig) {
     }
 
     console.log('%s: Node server stopped.', Date(Date.now()) );
-}
-
-function getData() {
-    try {
-        return require('./public/data');
-    } catch(e) {
-        console.warn('Missing API data!');
-    }
-
-    return {};
-}
-
-function filterData(data, query) {
-    if(!Object.keys(query).length) return data;
-
-    // ok if any part of query matches
-    return data.filter(function(d) {
-        for(var k in query) {
-            if(query.hasOwnProperty(k)) {
-                if(d[k] == query[k]) return true;
-            }
-        }
-    });
 }
