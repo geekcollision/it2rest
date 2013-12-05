@@ -3,7 +3,6 @@
   "version": "0.2.1",
   "description": "Provides IT company spreadsheet through REST api",
   "private": true,
-  "main": "./lib/parse.js",
   "engines": {
     "node": ">= 0.8.0",
     "npm": ">= 1.2.0"
