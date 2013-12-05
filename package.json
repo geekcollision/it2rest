@@ -4,7 +4,7 @@
   "description": "Provides IT company spreadsheet through REST api",
   "private": true,
   "engines": {
-    "node": ">= 0.8.0",
+    "node": ">= 0.10.0",
     "npm": ">= 1.2.0"
   },
   "scripts": {
