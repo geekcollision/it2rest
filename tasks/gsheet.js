@@ -3,20 +3,13 @@ var sugar = require('object-sugar');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var CronJob = require('cron').CronJob;
 
-var parse = require('./parse');
+var parse = require('../lib/parse');
+var sheet = require('../config').spreadsheet;
 
 var Company = require('../models').Company;
 
 
-module.exports = init;
-
-function init(config, cb) {
-    loadData(config.spreadsheet, cb);
-
-    if(config.cron) new CronJob(config.cron, loadData.bind(null, config.spreadsheet, cb), null, true);
-}
-
-function loadData(sheet, cb) {
+module.exports = function(cb) {
     sugar.removeAll(Company, function(err) {
         if(err) return cb(err);
 
@@ -26,7 +19,7 @@ function loadData(sheet, cb) {
             async.each(data, sugar.create.bind(null, Company), cb);
         });
     });
-}
+};
 
 function loadSheet(sheet, cb) {
     // it takes a couple of tries to get results for some reason (buggy lib?)
@@ -50,3 +43,4 @@ function loadSheet(sheet, cb) {
         cb(null, data);
     });
 }
+
