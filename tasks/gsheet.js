@@ -1,7 +1,6 @@
 var async = require('async');
 var sugar = require('object-sugar');
 var GoogleSpreadsheet = require('google-spreadsheet');
-var CronJob = require('cron').CronJob;
 
 var parse = require('../lib/parse');
 var sheet = require('../config').spreadsheet;
