@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+'use strict';
+
 var express = require('express');
 var rest = require('rest-sugar');
 var sugar = require('object-sugar');
@@ -14,7 +16,9 @@ main();
 function main() {
     taskist(config.tasks, tasks, {
         instant: function(err) {
-            if(err) return console.error(err);
+            if(err) {
+                return console.error(err);
+            }
 
             serve();
         }
@@ -49,7 +53,7 @@ function serve() {
 
     ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT', 'SIGBUS',
     'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGPIPE', 'SIGTERM'
-    ].forEach(function(element, index, array) {
+    ].forEach(function(element) {
         process.on(element, function() { terminator(element); });
     });
 
@@ -59,7 +63,7 @@ function serve() {
 }
 
 function terminator(sig) {
-    if(typeof sig === "string") {
+    if(typeof sig === 'string') {
         console.log('%s: Received %s - terminating Node server ...',
             Date(Date.now()), sig);
 
